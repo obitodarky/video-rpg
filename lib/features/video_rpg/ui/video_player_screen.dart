@@ -51,8 +51,8 @@ class VideoPlayerScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              provider.playVideo(choice.videoUrl);
                               provider.onChoiceSelect(choice);
+                              provider.playVideo(choice.videoUrl);
                             },
                             child: Text(choice.title),
                           ),
@@ -74,9 +74,9 @@ class VideoPlayerScreen extends StatelessWidget {
                           const EdgeInsets.symmetric(horizontal: 8.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              provider.playVideo(choice.videoUrl);
                               provider.onChoiceHistorySelect(choice);
                               provider.setCurrentChoice(choice);
+                              provider.playVideo(choice.videoUrl);
                             },
                             child: Text(choice.title),
                           ),
