@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.video_rpg">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="video_rpg"
         android:name="${applicationName}"
