@@ -29,12 +29,12 @@ An interactive video player.
 
 The following steps for installation are with FVM. You can also avoid using FVM as long as you have Flutter SDK version `3.3.8` installed
 
-1. Install FVM (Flutter Version Management) by following the official installation guide: [Provide the link to the official FVM installation guide]
+1. Install FVM (Flutter Version Management) by following the official installation guide: https://fvm.app/docs/getting_started/installation
 
 2. Clone the repository by running the following command:
 
     ```bash
-    git clone [URL of the repository]
+    git clone https://github.com/obitodarky/video-rpg.git
     cd video_rpg    
     ```
 
@@ -68,29 +68,29 @@ All the features should separately go inside the `/features` directory. Every fe
 
 ### data
 This contains the `Choice` data model and `getMockData` public method.
-Ideally the data layer should contain data models, currently we have also added a sample `getMockData` method since we do not have any network calls. If there are any network calls, ideally they should go to the `network` layer which should call generic network calls from an abstract class, agnostic of the feature.
+Ideally, the data layer should contain data models, currently, we have also added a sample `getMockData` method since we do not have any network calls. If there are any network calls, ideally they should go to the `network` layer which should call generic network calls from an abstract class, agnostic of the feature.
 
 ### provider
-Provider will contain the business logic that updates the UI layer. Any updates/changes should happen here. The `VideoPlayerProvider` class notifies listeners on the UI layer and tells them when to update the view 
+The Provider will contain the business logic that updates the UI layer. Any updates/changes should happen here. The `VideoPlayerProvider` class notifies listeners on the UI layer and tells them when to update the view 
 
 ### ui
-UI layer has just one screen `VideoPlayerScreen`. Since the scope of the project is not that big, function `_formatDuration` has been defined in the class itself. Ideally, the formatting functions should be in a seprate `util` file. `VideoPlayerScreen` should ideally also be broken down into smaller Widgets for readability and reusability, again keeping the scope of the project in mind, this was not considered. 
+UI layer has just one screen `VideoPlayerScreen`. Since the project scope is not that big, function `_formatDuration` has been defined in the class itself. Ideally, the formatting functions should be in a separate `util` file. `VideoPlayerScreen` should ideally also be broken down into smaller Widgets for readability and reusability, again keeping the scope of the project in mind, this was not considered. 
 
 
 
 ## Using the App
 
-Once the app is launched, a video will open up. (Ideally the videos should have defined aspect ratio (eg: 16:9, 4:3), but since the videos were sample/test videos randomly taken from the internet, they have different aspect ratios). 
+Once the app is launched, a video will open up. (Ideally, the videos should have defined aspect ratios (eg: 16:9, 4:3), but since the videos were sample/test videos randomly taken from the internet, they have different aspect ratios). 
 
 The play button will start the video. 
-There is a seek bar that helps in going forwards/backwards in the video. 
-Once the first video is played, user is prompted with two options to select a choice. Based on the choice they select, a different video will be played. Once user taps on the video again, they can use the playback options provided to them and also go back to different options and revisit the video.
+The video has a seek bar that helps in going forwards/backward. 
+Once the first video is played, the user is prompted with two options to select a choice. Based on the choice they choose, a different video will be played. Once the user taps on the video again, they can use the playback options provided to them and also go back to different options and revisit the video.
 
 
 ## Modifications
 
 - Data Moditifaciton
-  - If you want to test on different videos, you can add your links to the `getMockData` method. The data follows a binary tree like structure. So make sure your last `Choice` should not have any `nextOptions` and your `rootOption` will be the first option given to the user
+  - If you want to test on different videos, you can add your links to the `getMockData` method. The data follows a binary tree-like structure. So make sure your last `Choice` should not have any `nextOptions` and your `rootOption` will be the first option given to the user
   - If you want to add other attributes to the `Choice` class, (like emojis, ids, widgets, etc) you can add them as separate fields (make sure you keep null safety in mind)
 - UI Modification
   - `VideoPlayer` library uses a very basic video player. All the UI controls are built on top. These controls can be changed to your liking. You can also change the UI for showing options, currently only a button UI is shown for each option. Similarly, you can also change the re-selecting of the options widget as per your liking
